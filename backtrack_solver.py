@@ -1,17 +1,15 @@
 class backtrack_sovler:
-    # Default values
-    # edge_length = 9
-    # numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     def __init__(self, edge_length=9):
-        if (edge_length % 3 != 0):
+        if edge_length % 3 != 0:
             raise ValueError('Edge length must be divisor of 3')
         self.square_edge_length = edge_length // 3
         self.edge_length = edge_length
         self.numbers = list()
         for i in range(0, edge_length):
             self.numbers.append(i + 1)
-
+    # Method that prints puzzle
+    # Could be overwritten depending on needs
     def print_puzzle(self, puzzle):
         string = ""
 
@@ -30,7 +28,7 @@ class backtrack_sovler:
             string = append_line(string)
 
         print(string)
-
+    # Backtracking solution 
     def solve_backtrack(self, puzzle, row, col):
         def reject(puzzle, row, col):
 
@@ -91,6 +89,8 @@ testpuzzle = [
     [9, 0, 3, 0, 0, 0, 0, 0, 0],
     [0, 2, 0, 0, 0, 0, 1, 0, 0],
 ]
+
+
 bts.print_puzzle(testpuzzle)
 print('Solution')
 bts.solve_backtrack(testpuzzle, 0, 0)
